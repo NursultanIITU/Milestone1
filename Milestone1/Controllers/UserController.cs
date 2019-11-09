@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +23,11 @@ namespace Milestone1.Controllers
         // GET: User
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Users.ToListAsync());
         }
+
+       
 
         // GET: User/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -47,6 +51,24 @@ namespace Milestone1.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+
+        [AcceptVerbs("Get", "Post")]
+        [AllowAnonymous]
+        public async Task<IActionResult> IsEmailInUseAsync(string EmpCode)
+        {
+            var user = await _context.Users
+               .AnyAsync(m => m.EmpCode == EmpCode);
+ 
+            if (!user)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json($"Email {EmpCode} is already in use.");
+            }
         }
 
         // POST: User/Create
