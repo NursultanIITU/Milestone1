@@ -12,11 +12,23 @@ namespace Milestone1.Models
         [Key]
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
+
+        [Required]
         public string AddressLine1 { get; set; }
+
+        [Required]
         public string AddressLine2 { get; set; }
+
+        [Required]
         public string City { get; set; }
+
+        [Required]
         public string Pincode { get; set; }
+
+        [Required]
         public string State { get; set; }
+
+        [Required]
         public string Country { get; set; }
 
         public virtual Employee Employee { get; set; }

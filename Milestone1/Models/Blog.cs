@@ -11,12 +11,18 @@ namespace Milestone1.Models
     {
         [Key]
         public int blogID { get; set; }
+
         [Column(TypeName = "nvarchar(250)")]
         [Required, MaxLength(100, ErrorMessage = "Title cannot exceed 50 characters")]
         public string Title { get; set; }
+
         [Column(TypeName = "varchar(10)")]
-        [Required, MaxLength(250, ErrorMessage = "Content cannot exceed 50 characters")]
+        [Required, MaxLength(250, ErrorMessage = "Content cannot exceed 250 characters")]
         public string Content { get; set; }
+
+        [Column(TypeName = "varchar(100)")]
+        [Required, MaxLength(150, ErrorMessage = "Image cannot exceed 100 characters")]
+        public string Image { get; set; }
 
         public int userID { get; set; }
 

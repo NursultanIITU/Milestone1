@@ -57,7 +57,7 @@ namespace Milestone1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("blogID,Title,Content,userID")] Blog blog)
+        public async Task<IActionResult> Create([Bind("blogID,Title,Content,Image,userID")] Blog blog)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace Milestone1.Controllers
             {
                 return NotFound();
             }
-            ViewData["userID"] = new SelectList(_context.Users, "userID", "FullName", blog.userID);
+            ViewData["userID"] = new SelectList(_context.Users, "userID", "About", blog.userID);
             return View(blog);
         }
 
@@ -91,7 +91,7 @@ namespace Milestone1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("blogID,Title,Content,userID")] Blog blog)
+        public async Task<IActionResult> Edit(int id, [Bind("blogID,Title,Content,Image,userID")] Blog blog)
         {
             if (id != blog.blogID)
             {
@@ -118,7 +118,7 @@ namespace Milestone1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["userID"] = new SelectList(_context.Users, "userID", "FullName", blog.userID);
+            ViewData["userID"] = new SelectList(_context.Users, "userID", "About", blog.userID);
             return View(blog);
         }
 

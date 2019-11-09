@@ -14,17 +14,19 @@ namespace Milestone1.Models
     {
         [Key]
         public int userID { get; set; }
+
         [Column(TypeName = "nvarchar(250)")]
         [Required, MaxLength(50, ErrorMessage = "Name cannot exceed 50 characters")]
         public string FullName { get; set; }
+
         [Column(TypeName = "varchar(10)")]
         [Display(Name = "Email")]
         [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Invalid email format")]
         [Required]
-        [ValidEmailDomainAttribute(allowedDomain:"iitu.kz", ErrorMessage = "Email domain must be iitu.kz")]
+        [ValidEmailDomainAttribute(allowedDomain:"iitu.kz", ErrorMessage = "Email domain must be @iitu.kz")]
         [Remote(action: "IsEmailInUseAsync", controller: "User")]
-        //[Remote("IsEmailInUse", "User", ErrorMessage = "Remote validation is working")]
         public string EmpCode { get; set; }
+
         [Column(TypeName = "varchar(100)")]
         [Required]
         public string About { get; set; }

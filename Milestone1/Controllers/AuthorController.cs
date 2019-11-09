@@ -78,29 +78,6 @@ namespace Milestone1.Controllers
             {
                 return NotFound();
             }
-
-            //var Results = from b in _context.Books
-            //              select new
-            //              {
-            //                  b.BookID,
-            //                  b.Title,
-            //                  Checked = ((from ab in _context.AuthorsToBooks
-            //                              where (ab.AuthorID == id) & (ab.BookID == b.BookID)
-            //                              select ab).Count() > 0)
-            //              };
-            //var MyViewModel = new AuthorsViewModel();
-            //MyViewModel.AuthorID = id.Value;
-            //MyViewModel.Name = author.Name;
-            //MyViewModel.Surname = author.Surname;
-
-            //var MyCheckBoxList = new List<CheckBoxViewModel>();
-
-            //foreach (var item in Results)
-            //{
-            //    MyCheckBoxList.Add(new CheckBoxViewModel { ID = item.BookID, Name = item.Title, Checked = item.Checked });
-            //}
-
-            //MyViewModel.Books = MyCheckBoxList;
             return View(author);
         }
 
