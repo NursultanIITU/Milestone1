@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milestone1", "Milestone1\Milestone1.csproj", "{DDC055A2-43C2-4E43-96C9-E0AC2F5D852D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{899EDF76-45F2-42C8-836E-FA409D03D5D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserUnitTest", "UserUnitTest\UserUnitTest.csproj", "{35EF84E8-00B3-4733-8679-0F5E9F472A80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{DDC055A2-43C2-4E43-96C9-E0AC2F5D852D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDC055A2-43C2-4E43-96C9-E0AC2F5D852D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDC055A2-43C2-4E43-96C9-E0AC2F5D852D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35EF84E8-00B3-4733-8679-0F5E9F472A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35EF84E8-00B3-4733-8679-0F5E9F472A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35EF84E8-00B3-4733-8679-0F5E9F472A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35EF84E8-00B3-4733-8679-0F5E9F472A80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{35EF84E8-00B3-4733-8679-0F5E9F472A80} = {899EDF76-45F2-42C8-836E-FA409D03D5D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA78734-D175-4F3C-B44E-68CD9A6CB196}

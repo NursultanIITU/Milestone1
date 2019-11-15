@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Milestone1.Models
 {
-    public class Address
+    public class Address 
     {
         [Key]
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
 
-        [Required]
+    
         public string AddressLine1 { get; set; }
 
-        [Required]
+ 
         public string AddressLine2 { get; set; }
 
         [Required]
@@ -32,5 +32,6 @@ namespace Milestone1.Models
         public string Country { get; set; }
 
         public virtual Employee Employee { get; set; }
+
     }
 }

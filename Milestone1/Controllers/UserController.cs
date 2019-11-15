@@ -8,16 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Milestone1.Data;
 using Milestone1.Models;
+using Milestone1.Services;
 
 namespace Milestone1.Controllers
 {
     public class UserController : Controller
     {
         private readonly MyAppContext _context;
+        private UserService _userService;
 
-        public UserController(MyAppContext context)
+        public UserController(MyAppContext context, UserService userService)
         {
             _context = context;
+            _userService = userService;
         }
 
         // GET: User
@@ -32,17 +35,12 @@ namespace Milestone1.Controllers
         // GET: User/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            _userService.checkId(id);
 
             var user = await _context.Users
                 .FirstOrDefaultAsync(m => m.userID == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+
+            _userService.checkUser(user);
 
             return View(user);
         }
@@ -80,8 +78,9 @@ namespace Milestone1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
+                //_context.Add(user);
+                //await _context.SaveChangesAsync();
+                _userService.AddUser(user);
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -90,16 +89,12 @@ namespace Milestone1.Controllers
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            _userService.checkId(id);
 
             var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+
+            _userService.checkUser(user);
+
             return View(user);
         }
 

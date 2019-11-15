@@ -10,7 +10,7 @@ using Milestone1.Utilities;
 
 namespace Milestone1.Models
 {
-    public class User
+    public class User : IValidatableObject
     {
         [Key]
         public int userID { get; set; }
@@ -27,10 +27,30 @@ namespace Milestone1.Models
         [Remote(action: "IsEmailInUseAsync", controller: "User")]
         public string EmpCode { get; set; }
 
+        public static explicit operator User(Task<User> v)
+        {
+            throw new NotImplementedException();
+        }
+
         [Column(TypeName = "varchar(100)")]
         [Required]
         public string About { get; set; }
 
         public virtual ICollection<Blog> Blogs { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            int wordCount = 1;
+
+            for (int i = 0; i < FullName.Length; i++)
+            {
+                if (FullName[i] == ' ')
+                    wordCount++;
+            }
+            if (wordCount != 2)
+                yield return new ValidationResult("Input 'Name' must have last name and first name");
+        }
+
+    
     }
 }

@@ -10,15 +10,15 @@ namespace Milestone1.Models
     public class Employee
     {
         public int EmployeeID { get; set; }
-        [Required]
+        
         public string FirstName { get; set; }
-        [Required]
+       
         public string LastName { get; set; }
         [Required, EmailAddress]
         public string Email { get; set; }
-        [Required]
+       
         public string MobileNo { get; set; }
-        [Required]
+     
         //[PosNumberAttribute(ErrorMessage = "need a positive number, bigger than 0")]
         public int salary { get; set; }
 
