@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Milestone1.Data;
+using Milestone1.Interfaces;
 using Milestone1.Models;
 using System;
 using System.Collections.Generic;
@@ -10,70 +11,45 @@ namespace Milestone1.Services
 {
     public class UserService
     {
-        private readonly MyAppContext _context;
+        private readonly IUser _user;
 
-       
-        public int Sum(int firstNumber, int secondNumber)
+        public UserService(IUser context)
         {
-            return firstNumber + secondNumber;
+            _user = context;
         }
 
-        public double Divide(int firstNumber, int secondNumber)
+        public async Task<List<User>> GetUsers()
         {
-            if (secondNumber == 0) throw new ArgumentException("Second number can't be 0");
-
-            return firstNumber / secondNumber;
+            return await _user.GetAll();
         }
 
-        public UserService(MyAppContext context)
+        public async Task AddAndSave(User movie)
         {
-            _context = context;
+            _user.Add(movie);
+            await _user.Save();
         }
 
-        public UserService()
+        public async Task DeleteUser(int id)
         {
+            await _user.DeleteUser(id);
         }
 
-        public async void AddUser(User user)
+        public bool IsEntityExist(int id)
         {
-            if(user==null)
-            {
-                throw new System.ArgumentException("user cannot be null", "original");
-            }
-             _context.Add(user);
-            await _context.SaveChangesAsync();
-        
+            return _user.IsEntityExist(id);
         }
 
-        public async void checkId(int? ID)
-        {
-            if (ID == null)
-            {
-                throw new System.ArgumentException("ID cannot be null", "original");
-            }
-        }
 
-       
-
-        public bool checkUser(User user)
-        {
-            if (user == null)
-            {
-                throw new System.ArgumentException("user cannot be null", "original");
-            }
-            else
-            {
-                return true;
-            }
-           
-        }
 
         public bool checkUser2(int id)
         {
             if (id < 0)
             {
                 throw new System.ArgumentException("user cannot be null", "original");
-              
+            }
+            else if (id == null)
+            {
+                throw new System.ArgumentException("ID cannot be null", "original");
             }
             else
             {

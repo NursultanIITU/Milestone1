@@ -9355,11 +9355,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\77479\\source\\repos\\Milestone1\\UserUnitTest\\UserUnitTest.csproj",
+      "projectUniqueName": "D:\\Milestone1\\UserUnitTest\\UserUnitTest.csproj",
       "projectName": "UserUnitTest",
-      "projectPath": "C:\\Users\\77479\\source\\repos\\Milestone1\\UserUnitTest\\UserUnitTest.csproj",
+      "projectPath": "D:\\Milestone1\\UserUnitTest\\UserUnitTest.csproj",
       "packagesPath": "C:\\Users\\77479\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\77479\\source\\repos\\Milestone1\\UserUnitTest\\obj\\",
+      "outputPath": "D:\\Milestone1\\UserUnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9378,8 +9378,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\77479\\source\\repos\\Milestone1\\Milestone1\\Milestone1.csproj": {
-              "projectPath": "C:\\Users\\77479\\source\\repos\\Milestone1\\Milestone1\\Milestone1.csproj"
+            "D:\\Milestone1\\Milestone1\\Milestone1.csproj": {
+              "projectPath": "D:\\Milestone1\\Milestone1\\Milestone1.csproj"
             }
           }
         }

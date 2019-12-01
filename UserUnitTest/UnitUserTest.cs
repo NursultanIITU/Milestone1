@@ -2,29 +2,72 @@ using System;
 using Xunit;
 using Milestone1.Services;
 using Milestone1.Models;
+using System.Threading.Tasks;
+using Moq;
+using Milestone1.Interfaces;
+using System.Collections.Generic;
 
 namespace Milestone1.UserUnitTest
 {
     public class UnitUserTest
     {
-        [Theory]
-        [InlineData(1, 2, 3)]
-        [InlineData(15, 33, 48)]
-        public void SumTest(int firstNumber, int secondNumber, int expectedResult)
+        List<User> users = new List<User>
+            {
+                  new User() { FullName = "test user 1", EmpCode="nurs@gmail.com",About="The best" },
+                new User() { FullName = "test user 2",EmpCode="mads@gmail.com",About="The best of the best" },
+            };
+
+        [Fact]
+        public async Task AddTest()
         {
-            var userService = new UserService();
-           // var calService = new CalculatorService();
-            var resultSum = userService.Sum(firstNumber, secondNumber);
-            Assert.Equal(expectedResult, resultSum);
+            var fakeRepository = Mock.Of<IUser>();
+            var userService = new UserService(fakeRepository);
+
+            var user = new User() { FullName = "test user 1", EmpCode = "nurs@gmail.com", About = "The best" };
+            await userService.AddAndSave(user);
         }
 
         [Fact]
-        public void AddUser()
+        public async Task GetUsersTest()
         {
-            var userService = new UserService();
-           // var resultSum = userService.checkUser2(-9);
-            Assert.Equal(true, userService.checkUser2(9));
+            var users = new List<User>
+            {
+                  new User() { FullName = "test user 1", EmpCode="nurs@gmail.com",About="The best" },
+                new User() { FullName = "test user 2",EmpCode="mads@gmail.com",About="The best of the best" },
+            };
+
+            var fakeRepositoryMock = new Mock<IUser>();
+            fakeRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(users);
+
+
+            var userService = new UserService(fakeRepositoryMock.Object);
+
+            var resultUsers = await userService.GetUsers();
+
+            Assert.Collection(resultUsers, movie =>
+            {
+                Assert.Equal("test user 1", movie.FullName);
+            },
+            movie =>
+            {
+                Assert.Equal("test user 2", movie.FullName);
+            });
+        }
+
+        [Fact]
+        public async Task DeleteEntityTest()
+        {
+            var fakeRepositoryMock = new Mock<IUser>();
+            fakeRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(users);
+
+
+            var userService = new UserService(fakeRepositoryMock.Object);
+
+            await userService.DeleteUser(2);
         }
     
-    }
+
+
+
+}
 }

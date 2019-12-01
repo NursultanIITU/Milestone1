@@ -13219,11 +13219,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\77479\\source\\repos\\Milestone1\\Milestone1\\Milestone1.csproj",
+      "projectUniqueName": "D:\\Milestone1\\Milestone1\\Milestone1.csproj",
       "projectName": "Milestone1",
-      "projectPath": "C:\\Users\\77479\\source\\repos\\Milestone1\\Milestone1\\Milestone1.csproj",
+      "projectPath": "D:\\Milestone1\\Milestone1\\Milestone1.csproj",
       "packagesPath": "C:\\Users\\77479\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\77479\\source\\repos\\Milestone1\\Milestone1\\obj\\",
+      "outputPath": "D:\\Milestone1\\Milestone1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

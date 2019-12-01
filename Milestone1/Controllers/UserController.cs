@@ -12,6 +12,7 @@ using Milestone1.Services;
 
 namespace Milestone1.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly MyAppContext _context;
@@ -35,12 +36,12 @@ namespace Milestone1.Controllers
         // GET: User/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            _userService.checkId(id);
+           // _userService.checkId(id);
 
             var user = await _context.Users
                 .FirstOrDefaultAsync(m => m.userID == id);
 
-            _userService.checkUser(user);
+           // _userService.checkUser(user);
 
             return View(user);
         }
@@ -80,7 +81,7 @@ namespace Milestone1.Controllers
             {
                 //_context.Add(user);
                 //await _context.SaveChangesAsync();
-                _userService.AddUser(user);
+                _userService.AddAndSave(user);
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -89,11 +90,11 @@ namespace Milestone1.Controllers
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            _userService.checkId(id);
+           // _userService.checkId(id);
 
             var user = await _context.Users.FindAsync(id);
 
-            _userService.checkUser(user);
+           // _userService.checkUser(user);
 
             return View(user);
         }

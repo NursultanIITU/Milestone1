@@ -40,15 +40,8 @@ namespace Milestone1.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            int wordCount = 1;
-
-            for (int i = 0; i < FullName.Length; i++)
-            {
-                if (FullName[i] == ' ')
-                    wordCount++;
-            }
-            if (wordCount != 2)
-                yield return new ValidationResult("Input 'Name' must have last name and first name");
+            if (About.Length < 10)
+                yield return new ValidationResult("Input 'About' should be at least 10");
         }
 
     

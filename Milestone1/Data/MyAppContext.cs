@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Milestone1.Models;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace Milestone1.Data
 {
-    public class MyAppContext : DbContext
+    public class MyAppContext : IdentityDbContext
     {
         public MyAppContext(DbContextOptions<MyAppContext> options) : base(options)
         {
 
         }
+      
 
         public DbSet<User> Users { get; set; }
         public DbSet<Blog> Blogs { get; set; }
